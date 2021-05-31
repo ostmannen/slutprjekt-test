@@ -8,11 +8,11 @@ namespace slutProjekt_test
         public buffingMeteor(float x, float y, float width, float height, Color recColor): base(x, y, width, height, recColor)
         {
         }
-        public override void onDeath(){
-            buff();
+        public override void OnDeath(){
+            Buff();
         }
         //används som en mall för att kunna skapa flera andra metioriter som ska ge spelaren en buff när spelaren förstör dem
-        public virtual void buff(){
+        public virtual void Buff(){
 
         }
         

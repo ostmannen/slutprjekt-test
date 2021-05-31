@@ -9,7 +9,7 @@ namespace slutProjekt_test
         public speedBuffMeteor(float x, float y, float width, float height, Color recColor): base(x, y, width, height, recColor)
         {
         }
-        public override void buff(){
+        public override void Buff(){
             Ship.moveSpeed += 1;
         }
     }

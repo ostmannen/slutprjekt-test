@@ -9,37 +9,35 @@ namespace slutProjekt_test
         Random generator = new Random();
         
         private int spawnTimer = 0;
-        public void update()
+        public void Update()
         {
             if (spawnTimer <= 0){
-                randomSpawn();
+                RandomSpawn();
                 spawnTimer = 60;
             }
             spawnTimer--;
             //kör metoden randomspawn varje sekund
             for (int i = 0; i < Meteor.allMeteors.Count; i++)
             {
-                Meteor.allMeteors[i].update();
+                Meteor.allMeteors[i].Update();
             }
             
         }
-        private int randomise(int min, int max){
+        private int Randomise(int min, int max){
             int r = generator.Next(min, max);
             return r;
         }
-        private void randomSpawn(){
-            int r = randomise(3,3);
+        private void RandomSpawn(){
+            int r = Randomise(1,4);
             if (r == 1){
-                Meteor.allMeteors.Add(new Meteor(randomise(1,600), -40, randomise(40,80), randomise(40,80), Color.PINK));
+                Meteor.allMeteors.Add(new Meteor(Randomise(1,600), -40, Randomise(40,80), Randomise(40,80), Color.BLACK));
             }
             if (r == 2){
-                Meteor.allMeteors.Add(new ExplodingMeteor(randomise(1,600), -40, randomise(40,80), randomise(40,80), Color.PINK));
+                Meteor.allMeteors.Add(new ExplodingMeteor(Randomise(1,600), -40, Randomise(40,80), Randomise(40,80), Color.PINK));
             }
             if (r == 3){
-                Meteor.allMeteors.Add(new speedBuffMeteor(randomise(1,600), -40, randomise(40,80), randomise(40,80), Color.BLUE));
+                Meteor.allMeteors.Add(new speedBuffMeteor(Randomise(1,600), -40, Randomise(40,80), Randomise(40,80), Color.BLUE));
             }
-
         }
-       
     }
 }

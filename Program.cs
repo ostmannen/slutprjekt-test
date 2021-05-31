@@ -17,7 +17,7 @@ namespace slutProjekt_test
             Raylib.SetTargetFPS(60);
             //skapar ett fönster åt raylib och setter fps
 
-            Ship player = new Ship();
+            Ship player = new bigShip();
 
             MeteorSpawner spawn = new MeteorSpawner();
             //skapar instanser av ship och meteorspawner
@@ -28,18 +28,18 @@ namespace slutProjekt_test
 
                 Raylib.ClearBackground(Color.GRAY);
 
-                player.update();
+                player.Update();
                 //kör ship update metoden
 
                 Raylib.DrawText(player.hp.ToString() + "Hp",25,25,30, Color.RED);
                 //skriver ut hur mycket hp spelaren har
 
-                spawn.update();
+                spawn.Update();
                 //kör meteorspwner update metoden
 
                 for (int i = 0; i < Bullet.allBullets.Count; i++)
                 {
-                    Bullet.allBullets[i].update();
+                    Bullet.allBullets[i].Update();
                 }
                 //kör alla bullets update
                 Raylib.EndDrawing();

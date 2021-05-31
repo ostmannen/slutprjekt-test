@@ -13,7 +13,7 @@ namespace slutProjekt_test
             allBullets.Add(this);
             //när den instanseras skapas bullets rectangel och lägger till den i en lista 
         }
-        public void update(){
+        public void Update(){
             Raylib.DrawRectangleRec(bullet, Color.BLUE);
             bullet.y -= 8;
             //ritar ut bullet och gör så att den åker uppåt

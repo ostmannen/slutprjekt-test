@@ -7,7 +7,6 @@ namespace slutProjekt_test
 {
     public class Meteor
     {
-        public static int scorecounter = 0;
         public Rectangle meteor;
         public static List<Meteor> allMeteors = new List<Meteor>();
         public int moveX = 0;
@@ -20,35 +19,34 @@ namespace slutProjekt_test
             //färgen som skrevs in kommer också sparas 
         }
 
-        public void update(){
+        public void Update(){
             
             Raylib.DrawRectangleRec(meteor, meteorColor);
-            checkCollision();
-            move();
+            CheckCollision();
+            Move();
             //varje frame så ritas rektangeln ut och checkCollision samt move metoderna körs            
         }
-        public void move(){
+        private void Move(){
             meteor.y += moveY;
             meteor.x += moveX;
             //adderar på x och y värdet
         }
-        public void checkCollision(){
+        private void CheckCollision(){
             for (int i = 0; i < Bullet.allBullets.Count; i++)
             {
                 if (Raylib.CheckCollisionRecs(Bullet.allBullets[i].bullet, meteor))
                 {
                     allMeteors.Remove(this);
                     Bullet.allBullets.RemoveAt(i);
-                    onDeath();
+                    OnDeath();
                 }
                 //går igenom alla bullets och kollar ifall de colliderar med meteor
                 //ifall det händer så förstörs meteor och bullet och onDeath metoden körs
             }
         }
-        public virtual void onDeath(){
+        public virtual void OnDeath(){
         }
-        public void add(){
-            
-        }
+        //skulle kunna användas för att lägga till score men orkade inte så...
+
     }
 }

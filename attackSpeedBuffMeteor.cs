@@ -8,9 +8,9 @@ namespace slutProjekt_test
          public attackSpeedBuffMeteor(float x, float y, float width, float height, Color recColor): base(x, y, width, height, recColor)
         {
         }
-        public override void buff(){
+        public override void Buff(){
             Ship.shotSpeed += 2;
-            //ökar spelarens attack
+            //ökar spelarens attackspeed
         }
     }
 }

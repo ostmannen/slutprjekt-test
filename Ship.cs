@@ -11,17 +11,22 @@ namespace slutProjekt_test
         public static float shotSpeed = 1;
         public float canShot;
         public Rectangle player = new Rectangle(375, 400, 50, 50);
-        
 
-        public void update(){
+        public static Dictionary<string, Action> actions = new Dictionary<string, Action>();
+        
+        public Ship(){
+            actions.Add("shot", Shot);
+            actions.Add("move", Move);
+        }
+        public void Update(){
             Raylib.DrawRectangleRec(player, Color.BLACK);
-            move();
-            shot();
-            checkCollistion();
+            actions["move"]();
+            actions["shot"]();
+            CheckCollistion();
             
             
         }
-        private void move(){
+        private void Move(){
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT) && player.x <= 750)
             {
                 player.x += moveSpeed;
@@ -39,15 +44,14 @@ namespace slutProjekt_test
                 player.y += moveSpeed;
             }
         }
-        private void shot(){
+        private void Shot(){
             if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE) && canShot <= 0) {
                 new Bullet(player.x, player.y);
                 canShot = 30;
             }
             canShot -= shotSpeed;
-            System.Console.WriteLine(shotSpeed);
         }
-        public void checkCollistion(){
+        public void CheckCollistion(){
             
             for (int i = 0; i < Meteor.allMeteors.Count; i++)
             {
